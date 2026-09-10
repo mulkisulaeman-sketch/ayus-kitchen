@@ -1,0 +1,4 @@
+replicaCount: 3
+image: {tag: "0.1.0"}
+ingress: {enabled: true, host: ayus-kitchen.example.com}
+autoscaling: {enabled: true, minReplicas: 3, maxReplicas: 10, targetCPUUtilizationPercentage: 70}

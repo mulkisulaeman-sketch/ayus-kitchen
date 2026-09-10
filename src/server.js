@@ -1,0 +1,2 @@
+const {app,logger}=require('./app');const c=require('./config');const db=require('./db');
+(async()=>{try{await db.initDb();const s=app.listen(c.port,'0.0.0.0',()=>logger.info({service:'ayus-kitchen-api',version:c.version,port:c.port,environment:c.nodeEnv},'server started'));const shutdown=signal=>{logger.info({signal},'shutdown requested');s.close(async()=>{await db.pool.end();process.exit(0)})};process.on('SIGTERM',()=>shutdown('SIGTERM'));process.on('SIGINT',()=>shutdown('SIGINT'))}catch(e){logger.fatal({err:e},'failed to start server');process.exit(1)}})();

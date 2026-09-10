@@ -1,0 +1,29 @@
+{{- if .Values.postgres.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ayus-kitchen.fullname" . }}-postgres
+spec:
+  replicas: 1
+  selector: {matchLabels: {app: {{ include "ayus-kitchen.fullname" . }}-postgres}}
+  template:
+    metadata: {labels: {app: {{ include "ayus-kitchen.fullname" . }}-postgres}}
+    spec:
+      containers:
+        - name: postgres
+          image: {{ .Values.postgres.image }}
+          ports: [{containerPort: 5432}]
+          env:
+            - {name: POSTGRES_DB, value: {{ .Values.database.name | quote }}}
+            - {name: POSTGRES_USER, value: {{ .Values.database.user | quote }}}
+            - {name: POSTGRES_PASSWORD, value: {{ .Values.database.password | quote }}}
+          volumeMounts: [{name: data, mountPath: /var/lib/postgresql/data}]
+      volumes: [{name: data, emptyDir: {}}]
+---
+apiVersion: v1
+kind: Service
+metadata: {name: {{ include "ayus-kitchen.fullname" . }}-postgres}
+spec:
+  selector: {app: {{ include "ayus-kitchen.fullname" . }}-postgres}
+  ports: [{port: 5432, targetPort: 5432}]
+{{- end }}

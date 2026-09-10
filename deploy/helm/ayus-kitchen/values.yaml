@@ -1,0 +1,41 @@
+replicaCount: 2
+image:
+  repository: ghcr.io/YOUR_GITHUB_USERNAME/ayus-kitchen-api
+  tag: "0.1.0"
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 3000
+containerPort: 3000
+env:
+  NODE_ENV: production
+  APP_VERSION: "0.1.0"
+  LOG_LEVEL: info
+  DB_POOL_MAX: "10"
+database:
+  host: postgres
+  port: 5432
+  name: ayus_kitchen
+  user: postgres
+  password: postgres
+resources:
+  requests: {cpu: 100m, memory: 128Mi}
+  limits: {cpu: 500m, memory: 512Mi}
+probes:
+  liveness: {initialDelaySeconds: 15, periodSeconds: 10}
+  readiness: {initialDelaySeconds: 5, periodSeconds: 5}
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70
+ingress:
+  enabled: false
+  className: nginx
+  host: ayus-kitchen.local
+  path: /
+  pathType: Prefix
+postgres:
+  enabled: true
+  image: postgres:16-alpine
+  storage: 1Gi

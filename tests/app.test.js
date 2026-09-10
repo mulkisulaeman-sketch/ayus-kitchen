@@ -1,0 +1,1 @@
+const test=require('node:test');const assert=require('node:assert/strict');test('test runner works',()=>assert.equal(1+1,2));test('version is semver',()=>assert.match(process.env.APP_VERSION||'0.1.0',/^\d+\.\d+\.\d+$/));

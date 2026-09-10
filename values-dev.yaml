@@ -1,0 +1,4 @@
+replicaCount: 1
+image: {tag: "dev"}
+autoscaling: {enabled: false}
+ingress: {enabled: true, host: ayus-kitchen.local}

@@ -20,6 +20,7 @@ kind: Deployment
 metadata:
   name: {{ include "ayus-kitchen.fullname" . }}
   labels:
+    app.kubernetes.io/component: backend
     {{- include "ayus-kitchen.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -28,7 +29,9 @@ spec:
     matchLabels: {{- include "ayus-kitchen.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      labels: {{- include "ayus-kitchen.selectorLabels" . | nindent 8 }}
+      labels:
+        app.kubernetes.io/component: backend
+        {{- include "ayus-kitchen.selectorLabels" . | nindent 8 }}
     spec:
       securityContext: {seccompProfile: {type: RuntimeDefault}}
       containers:
@@ -57,7 +60,9 @@ metadata:
   name: {{ include "ayus-kitchen.fullname" . }}
 spec:
   type: {{ .Values.service.type }}
-  selector: {{- include "ayus-kitchen.selectorLabels" . | nindent 4 }}
+  selector:
+    app.kubernetes.io/component: backend
+    {{- include "ayus-kitchen.selectorLabels" . | nindent 4 }}
   ports: [{name: http, port: 3000, targetPort: http}]
 {{- if .Values.autoscaling.enabled }}
 ---

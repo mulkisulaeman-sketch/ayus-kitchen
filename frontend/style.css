@@ -1,0 +1,221 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.header {
+  background: #172033;
+  color: white;
+  padding: 24px 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header h1 {
+  margin: 4px 0 0;
+  font-size: 1.6rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.status {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-loading {
+  background: #475569;
+}
+
+.status-ok {
+  background: #166534;
+}
+
+.status-error {
+  background: #991b1b;
+}
+
+.hero {
+  margin: 32px 0 20px;
+  padding: 42px;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+.hero h2 {
+  margin: 8px 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+}
+
+.hero-text {
+  max-width: 650px;
+  color: #64748b;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+}
+
+.card strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.label {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 4px 0 0;
+}
+
+.users {
+  display: grid;
+  gap: 10px;
+}
+
+.user {
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.user strong {
+  display: block;
+}
+
+.user span {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+form {
+  display: grid;
+  gap: 8px;
+}
+
+label {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+}
+
+input:focus {
+  outline: 2px solid #94a3b8;
+  border-color: #64748b;
+}
+
+.button {
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button.primary {
+  margin-top: 12px;
+  background: #172033;
+  color: white;
+}
+
+.button.secondary {
+  background: #e2e8f0;
+  color: #172033;
+}
+
+.form-message {
+  min-height: 20px;
+  font-size: 0.85rem;
+}
+
+.muted {
+  color: #94a3b8;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 24px 0;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 800px) {
+  .stats,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero {
+    padding: 28px;
+  }
+}

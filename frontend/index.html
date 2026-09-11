@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayus Kitchen</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-content">
+      <div>
+        <span class="eyebrow">AYUS KITCHEN</span>
+        <h1>Kitchen Dashboard</h1>
+      </div>
+      <div id="api-status" class="status status-loading">
+        Checking API...
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">FULL-STACK APPLICATION</p>
+        <h2>Simple. Fresh. Connected.</h2>
+        <p class="hero-text">
+          A simple frontend running on Kubernetes and connected
+          to the Ayus Kitchen API.
+        </p>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="card">
+        <span class="label">Service</span>
+        <strong id="service">-</strong>
+      </div>
+
+      <div class="card">
+        <span class="label">Version</span>
+        <strong id="version">-</strong>
+      </div>
+
+      <div class="card">
+        <span class="label">Environment</span>
+        <strong id="environment">-</strong>
+      </div>
+
+      <div class="card">
+        <span class="label">Database</span>
+        <strong id="database">Checking...</strong>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">USERS</span>
+            <h3>Kitchen Users</h3>
+          </div>
+          <button id="refresh-users" class="button secondary">
+            Refresh
+          </button>
+        </div>
+
+        <div id="users" class="users">
+          <p class="muted">Loading users...</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">CREATE</span>
+            <h3>Add User</h3>
+          </div>
+        </div>
+
+        <form id="user-form">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="e.g. Ayu"
+            required
+          >
+
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="ayu@example.com"
+            required
+          >
+
+          <button type="submit" class="button primary">
+            Add User
+          </button>
+
+          <p id="form-message" class="form-message"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Ayus Kitchen · Kubernetes · GitOps
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
